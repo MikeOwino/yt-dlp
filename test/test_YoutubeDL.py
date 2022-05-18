@@ -542,6 +542,9 @@ class TestFormatSelection(unittest.TestCase):
         ydl = YDL({})
         self.assertEqual(ydl._default_format_spec({'is_live': True}), 'best/bestvideo+bestaudio')
 
+        ydl = YDL({'live_from_start': True})
+        self.assertEqual(ydl._default_format_spec({'is_live': True}), 'bestvideo*+bestaudio/best')
+
         ydl = YDL({'simulate': True})
         self.assertEqual(ydl._default_format_spec({'is_live': True}), 'bestvideo*+bestaudio/best')
 
